@@ -1,0 +1,31 @@
+{
+  "name": "text-shadow-component",
+  "version": "1.0.0",
+  "description": "this is custom component text shadow",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pham-minh-hai-au-react-native/TextShadowComponent.git"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": "pham minh hai au",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pham-minh-hai-au-react-native/TextShadowComponent/issues"
+  },
+  "homepage": "https://github.com/pham-minh-hai-au-react-native/TextShadowComponent#readme",
+  "devDependencies": {
+    "metro-react-native-babel-preset": "^0.62.0"
+  },
+  "peerDependencies": {
+    "colors-regex": "^2.0.0"
+  },
+  "dependencies": {
+    "colors-regex": "^2.0.0"
+  }
+}
