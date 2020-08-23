@@ -15,11 +15,6 @@ export class CSSShadowException extends SyntaxError {
     super('String Css Shadow is not valid');
   }
 }
-export class RedundantInsetShadow extends SyntaxError {
-  constructor() {
-    super('Has too many property inset in string');
-  }
-}
 export class RedundantColorShadow extends SyntaxError {
   constructor() {
     super('Has too many property color in string');

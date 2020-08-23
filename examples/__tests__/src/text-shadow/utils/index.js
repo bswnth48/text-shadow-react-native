@@ -17,7 +17,6 @@ import {
   NotSupportUnitPercent,
   NotSupportUnitRem,
   RedundantColorShadow,
-  RedundantInsetShadow,
   TypeColorException,
   UnknownUnit,
 } from 'components/text-shadow/errors';
@@ -69,9 +68,7 @@ describe('Test function getCssShadow', () => {
       horizontalOffset: 2,
       verticalOffset: 2,
       blurRadius: 2,
-      spreadRadius: 0,
       color: '#CE5937',
-      inset: false,
     };
     expect(typeof testCaseOne).toBe('object');
     expect(testCaseOne).toEqual(expect.objectContaining(expectObjectOne));
@@ -80,17 +77,10 @@ describe('Test function getCssShadow', () => {
       horizontalOffset: 2,
       verticalOffset: 2,
       blurRadius: 0,
-      spreadRadius: 0,
       color: '#CE5937',
-      inset: false,
     };
     expect(typeof testCaseTwo).toBe('object');
     expect(testCaseTwo).toEqual(expect.objectContaining(expectObjectTwo));
-  });
-  it('Test css shadow should throw new RedundantInsetShadow if have too much inset', async () => {
-    expect(() => {
-      getCssShadow('2px 2px #CE5937 inset inset');
-    }).toThrowError(new RedundantInsetShadow());
   });
   it('Test css shadow should throw new NotFoundColorShadow if not exists color', async () => {
     expect(() => {
@@ -138,9 +128,7 @@ describe('Test function getListCssShadow', () => {
           horizontalOffset: 0,
           verticalOffset: 1,
           blurRadius: 0,
-          spreadRadius: 0,
           color: '#808d93',
-          inset: false,
         }),
       ]),
     );
@@ -150,9 +138,7 @@ describe('Test function getListCssShadow', () => {
           horizontalOffset: -1,
           verticalOffset: 0,
           blurRadius: 0,
-          spreadRadius: 0,
           color: '#cdd2d5',
-          inset: false,
         }),
       ]),
     );
@@ -162,9 +148,7 @@ describe('Test function getListCssShadow', () => {
           horizontalOffset: -1,
           verticalOffset: 2,
           blurRadius: 0,
-          spreadRadius: 0,
           color: '#808d93',
-          inset: false,
         }),
       ]),
     );

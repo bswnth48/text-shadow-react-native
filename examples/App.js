@@ -8,12 +8,16 @@
 
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import {TextShadow} from './src/components/text-shadow';
+import {TextShadow} from '@components/text-shadow';
 const App = () => {
   return (
     <>
       <View style={styles.container}>
-        <TextShadow boxShadow={'adsdadsada'} />
+        <TextShadow
+          title={'Preview'}
+          textShadow={'4px 3px 0 #7A7A7A'}
+          titleStyle={{fontSize: 60, color: '#ffffff'}}
+        />
       </View>
     </>
   );
@@ -22,6 +26,9 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#b8b8b8',
   },
 });
 

@@ -14,7 +14,6 @@ import {
   NotSupportUnitPercent,
   NotSupportUnitRem,
   RedundantColorShadow,
-  RedundantInsetShadow,
   TypeColorException,
   UnknownUnit,
   VerticalOffsetRequired,
@@ -55,19 +54,10 @@ export const getCssShadow = (cssShadow: string): CssShadow => {
   const arrCssShadowRemoveElemetWhiteSpace = arrCssShadow.filter(
     (item: string) => item !== '',
   );
-  const [firstInset, ...restInset] = arrCssShadowRemoveElemetWhiteSpace.filter(
-    (item: string) => item === 'inset',
-  );
-  const arrCSSShadowRemoveInset = arrCssShadowRemoveElemetWhiteSpace.filter(
-    (item: string) => item !== 'inset',
-  );
-  if (restInset.length > 0) {
-    throw new RedundantInsetShadow();
-  }
   const [
     firstColor,
     ...restColor
-  ] = arrCSSShadowRemoveInset.filter((item: string): boolean =>
+  ] = arrCssShadowRemoveElemetWhiteSpace.filter((item: string): boolean =>
     ['rgb', 'rgba', 'hsl', 'hsla', '#'].some((typeColor: string): boolean =>
       item.startsWith(typeColor),
     ),
@@ -77,7 +67,7 @@ export const getCssShadow = (cssShadow: string): CssShadow => {
   } else if (restColor.length > 0) {
     throw new RedundantColorShadow();
   }
-  const arrCssShadowRemoveInsetAndColor = arrCSSShadowRemoveInset.filter(
+  const arrCssShadowRemoveColor = arrCssShadowRemoveElemetWhiteSpace.filter(
     (item: string): boolean =>
       ['rgb', 'rgba', 'hsl', 'hsla', '#'].every(
         (typeColor: string): boolean => item.startsWith(typeColor) === false,
@@ -87,9 +77,8 @@ export const getCssShadow = (cssShadow: string): CssShadow => {
     horizontalOffset,
     verticalOffset,
     blurRadius,
-    spreadRadius,
     ...rest
-  ] = arrCssShadowRemoveInsetAndColor
+  ] = arrCssShadowRemoveColor
     .filter((item: string) => {
       if (item.includes('px')) {
         return !isNaN(parseInt(item.split('px')[0], 0));
@@ -114,12 +103,10 @@ export const getCssShadow = (cssShadow: string): CssShadow => {
   }
 
   return {
-    inset: firstInset !== undefined,
     color: getColorValid(firstColor),
-    horizontalOffset,
-    verticalOffset,
-    blurRadius: blurRadius ?? 0,
-    spreadRadius: spreadRadius ?? 0,
+    horizontalOffset: parseInt(horizontalOffset, 0),
+    verticalOffset: parseInt(verticalOffset, 0),
+    blurRadius: parseInt(blurRadius, 0) ?? 1,
   };
 };
 export const getListCssShadow = (boxShadow: string): Array<CssShadow> => {
