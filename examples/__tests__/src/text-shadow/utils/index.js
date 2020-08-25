@@ -3,10 +3,10 @@
  * https://github.com/facebook/react-native
  *
  * @format
- * @flow strict-local
+ * @flow
  */
-
 import {
+  findCssShadowMax,
   getColorValid,
   getCssShadow,
   getListCssShadow,
@@ -20,6 +20,7 @@ import {
   TypeColorException,
   UnknownUnit,
 } from 'components/text-shadow/errors';
+import type {ColorValue} from 'react-native/Libraries/StyleSheet/StyleSheetTypes';
 describe('Test function getColorValid', () => {
   it('Test rgb color', async () => {
     const testCaseOne = getColorValid('rgb(255, 255, 255)');
@@ -76,7 +77,7 @@ describe('Test function getCssShadow', () => {
     const expectObjectTwo = {
       horizontalOffset: 2,
       verticalOffset: 2,
-      blurRadius: 0,
+      blurRadius: 1,
       color: '#CE5937',
     };
     expect(typeof testCaseTwo).toBe('object');
@@ -127,7 +128,7 @@ describe('Test function getListCssShadow', () => {
         expect.objectContaining({
           horizontalOffset: 0,
           verticalOffset: 1,
-          blurRadius: 0,
+          blurRadius: 1,
           color: '#808d93',
         }),
       ]),
@@ -137,7 +138,7 @@ describe('Test function getListCssShadow', () => {
         expect.objectContaining({
           horizontalOffset: -1,
           verticalOffset: 0,
-          blurRadius: 0,
+          blurRadius: 1,
           color: '#cdd2d5',
         }),
       ]),
@@ -147,10 +148,13 @@ describe('Test function getListCssShadow', () => {
         expect.objectContaining({
           horizontalOffset: -1,
           verticalOffset: 2,
-          blurRadius: 0,
+          blurRadius: 1,
           color: '#808d93',
         }),
       ]),
     );
   });
+});
+describe('Test function findCssShadowMax', () => {
+  it('Test function findCssShadowMax', async () => {});
 });

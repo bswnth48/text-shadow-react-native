@@ -5,4 +5,4 @@
  * @format
  * @flow
  */
-export * from './text-shadow-recurse';
+export * from './text-child-shadow';

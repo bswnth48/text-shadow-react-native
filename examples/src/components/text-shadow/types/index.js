@@ -3,10 +3,9 @@
  * https://github.com/facebook/react-native
  *
  * @format
- * @flow strict-local
+ * @flow
  */
 import type {ColorValue} from 'react-native/Libraries/StyleSheet/StyleSheetTypes';
-import type {TextStyle} from 'react-native/Libraries/StyleSheet/StyleSheet';
 
 export type CssShadow = {
   horizontalOffset: number,
@@ -15,7 +14,11 @@ export type CssShadow = {
   color: ColorValue,
 };
 
-export type TextStyleShadow = $PropertyType<
-  TextStyle,
-  ['textShadowOffset', 'textShadowRadius', 'textShadowColor'],
->;
+export type TextStyleShadow = {
+  textShadowOffset?: $ReadOnly<{|
+    width: number,
+    height: number,
+  |}>,
+  textShadowRadius?: number,
+  textShadowColor?: ColorValue,
+};

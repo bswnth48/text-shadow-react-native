@@ -3,7 +3,7 @@
  * https://github.com/facebook/react-native
  *
  * @format
- * @flow strict-local
+ * @flow
  */
 export class TypeColorException extends SyntaxError {
   constructor(type: string | Array<string>) {

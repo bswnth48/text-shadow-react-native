@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/pham-minh-hai-au-react-native/TextShadowComponent#readme",
   "devDependencies": {
-    "metro-react-native-babel-preset": "^0.62.0"
+    "metro-react-native-babel-preset": "^0.62.0",
+    "flow-bin": "^0.122.0"
   },
   "peerDependencies": {
     "colors-regex": "^2.0.0"

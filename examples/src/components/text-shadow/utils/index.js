@@ -3,9 +3,9 @@
  * https://github.com/facebook/react-native
  *
  * @format
- * @flow strict-local
+ * @flow
  */
-import type {CssShadow} from '../types';
+import type {CssShadow, TextStyleShadow} from '../types';
 import {
   CSSShadowException,
   HorizontalOffsetRequired,
@@ -81,7 +81,7 @@ export const getCssShadow = (cssShadow: string): CssShadow => {
   ] = arrCssShadowRemoveColor
     .filter((item: string) => {
       if (item.includes('px')) {
-        return !isNaN(parseInt(item.split('px')[0], 0));
+        return !isNaN(parseFloat(item.split('px')[0]));
       } else if (item.includes('rem')) {
         throw new NotSupportUnitRem();
       } else if (item.includes('em')) {
@@ -91,9 +91,9 @@ export const getCssShadow = (cssShadow: string): CssShadow => {
       } else if (item.match(/[^0-9]/)) {
         throw new UnknownUnit();
       }
-      return !isNaN(parseInt(item, 0));
+      return !isNaN(parseFloat(item));
     })
-    .map((item: string) => parseInt(item, 0));
+    .map((item: string) => parseFloat(item));
   if (horizontalOffset === undefined) {
     throw new HorizontalOffsetRequired();
   } else if (verticalOffset === undefined) {
@@ -104,12 +104,41 @@ export const getCssShadow = (cssShadow: string): CssShadow => {
 
   return {
     color: getColorValid(firstColor),
-    horizontalOffset: parseInt(horizontalOffset, 0),
-    verticalOffset: parseInt(verticalOffset, 0),
-    blurRadius: parseInt(blurRadius, 0) ?? 1,
+    horizontalOffset: parseFloat(horizontalOffset),
+    verticalOffset: parseFloat(verticalOffset),
+    blurRadius: !blurRadius
+      ? 1
+      : parseFloat(blurRadius) === 0
+      ? 1
+      : parseFloat(blurRadius),
   };
 };
 export const getListCssShadow = (boxShadow: string): Array<CssShadow> => {
   const listBoxShadow = boxShadow.split(/,(?![^\(]*\))/);
   return listBoxShadow.map((item: string) => getCssShadow(item));
+};
+export const findCssShadowMax = (arr: Array<TextStyleShadow>): any => {
+  const listRemoveColorAndConvertArrayAbs = arr.map((item: TextStyleShadow) => {
+    const {textShadowColor, textShadowOffset, ...restShadow} = item;
+    if (!textShadowOffset) {
+      throw new Error('ko ton tai');
+    }
+    const maxWidth = textShadowOffset.width ?? 0;
+    const maxHeight = textShadowOffset.height ?? 0;
+    const obj = Object.assign({}, restShadow);
+    obj.textShadowOffsetFlattern = maxWidth > maxHeight ? maxWidth : maxHeight;
+    return Object.values(obj).map((restItem: any): number =>
+      Math.abs(parseFloat(restItem)),
+    );
+  });
+  const listRemoveArrayEmpty = listRemoveColorAndConvertArrayAbs.filter(
+    (item: Array<number>): boolean => item.length > 0,
+  );
+  return listRemoveArrayEmpty.reduce(
+    (prev: number | Array<number>, next: number | Array<number>): any => {
+      const maxPrev: number = Array.isArray(prev) ? Math.max(...prev) : prev;
+      const maxNext: number = Array.isArray(next) ? Math.max(...next) : next;
+      return maxPrev > maxNext ? maxPrev : maxNext;
+    },
+  );
 };
