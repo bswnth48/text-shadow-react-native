@@ -9,6 +9,11 @@ Example Android                                             |  Example Ios
 * [Usage](#usage)
 * [Basic Example](#basic-example)
 * [Documentation](#documentation)   
+* [Note](#note)
+* [Inspired by](#inspired-by)
+* [Contributing](#contributing)
+* [Author](#author)
+* [License](#license)
     
 ## Installation
 
@@ -32,7 +37,8 @@ import { TextShadow } from 'text-shadow-component';
 
 ## Basic Example
 
-```javascript
+```jsx
+import {TextShadow} from 'text-shadow-component';
  <View
   style={{
     backgroundColor: '#232323', 
@@ -57,6 +63,10 @@ import { TextShadow } from 'text-shadow-component';
 | textShadow    | String css text shadow        | None          | String  |
 | titleStyle    | Style of text                 | Object Empty  | Object [Text Style](https://reactnative.dev/docs/text-style-props) |
 
+## Note
+property `textShadow` still not support unit rem, em, percent. Only support px or none unit.
+## Inspired by
+[Text-shadow](https://html-css-js.com/css/generator/text-shadow/)
 ## Contributing
 Pull requests are always welcome! Feel free to open a new GitHub issue for any changes that can be made.
 

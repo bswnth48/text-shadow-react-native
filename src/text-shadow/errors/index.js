@@ -54,6 +54,6 @@ export class NotSupportUnitPercent extends SyntaxError {
 }
 export class UnknownUnit extends SyntaxError {
   constructor() {
-    super('Unknow unit you used. Current only support px or number');
+    super('Unknown unit you used. Current only support px or number');
   }
 }

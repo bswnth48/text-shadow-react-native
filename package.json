@@ -1,6 +1,6 @@
 {
   "name": "text-shadow-component",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "this is custom component text shadow",
   "main": "index.js",
   "scripts": {

@@ -1,1 +1,4 @@
-export * from './text-shadow'
+import {TextShadow} from './text-shadow'
+export {
+  TextShadow
+}
