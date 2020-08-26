@@ -8,13 +8,14 @@
 
 import * as React from 'react';
 import {Text, View, StyleSheet, Platform} from 'react-native';
-import type {TextStyleShadow} from 'components/text-shadow/types';
 import type {TextStyle} from 'react-native/Libraries/StyleSheet/StyleSheet';
 import type {ColorValue} from 'react-native/Libraries/StyleSheet/StyleSheetTypes';
 import type {ViewLayoutEvent} from 'react-native/Libraries/Components/View/ViewPropTypes';
 import type {Layout} from 'react-native/Libraries/Types/CoreEventTypes';
 import {TextChildShadow} from './components';
-import {findCssShadowMax} from 'components/text-shadow/utils';
+import {findCssShadowMax} from '../../utils';
+import type {TextStyleShadow} from "../../types";
+
 type Props = {
   title: string,
   listStyleTextShadow: TextStyleShadow | Array<TextStyleShadow>,

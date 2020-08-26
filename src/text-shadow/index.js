@@ -12,7 +12,7 @@ import type {CssShadow, TextStyleShadow} from './types';
 import {getListCssShadow} from './utils';
 import type {TextStyle} from 'react-native/Libraries/StyleSheet/StyleSheet';
 import type {ColorValue} from 'react-native/Libraries/StyleSheet/StyleSheetTypes';
-import {TextShadowRecurse} from 'components/text-shadow/components';
+import {TextShadowRecurse} from './components/text-shadow-recurse';
 
 type Props = {
   title?: string,
