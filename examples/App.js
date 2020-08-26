@@ -8,7 +8,7 @@
 
 import * as React from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
-import {TextShadow} from '@components/text-shadow';
+import {TextShadow} from 'text-shadow-component';
 const dumData = [
   {
     color: '#FFFFFF',

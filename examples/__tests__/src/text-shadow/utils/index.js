@@ -6,7 +6,6 @@
  * @flow
  */
 import {
-  findCssShadowMax,
   getColorValid,
   getCssShadow,
   getListCssShadow,
@@ -20,7 +19,6 @@ import {
   TypeColorException,
   UnknownUnit,
 } from 'components/text-shadow/errors';
-import type {ColorValue} from 'react-native/Libraries/StyleSheet/StyleSheetTypes';
 describe('Test function getColorValid', () => {
   it('Test rgb color', async () => {
     const testCaseOne = getColorValid('rgb(255, 255, 255)');

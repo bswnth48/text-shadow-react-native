@@ -14,7 +14,8 @@
   "dependencies": {
     "colors-regex": "^2.0.0",
     "react": "16.13.1",
-    "react-native": "0.63.2"
+    "react-native": "0.63.2",
+    "text-shadow-component": "file:../text-shadow-component-1.0.0.tgz"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
