@@ -9,7 +9,7 @@ import type {CssShadow, TextStyleShadow} from '../types';
 import {
   CSSShadowException,
   HorizontalOffsetRequired,
-  NotFoundColorShadow,
+  NotFoundColorShadow, NotFoundWidthHeightOffset,
   NotSupportUnitEm,
   NotSupportUnitPercent,
   NotSupportUnitRem,
@@ -121,7 +121,7 @@ export const findCssShadowMax = (arr: Array<TextStyleShadow>): any => {
   const listRemoveColorAndConvertArrayAbs = arr.map((item: TextStyleShadow) => {
     const {textShadowColor, textShadowOffset, ...restShadow} = item;
     if (!textShadowOffset) {
-      throw new Error('ko ton tai');
+      throw new NotFoundWidthHeightOffset();
     }
     const maxWidth = textShadowOffset.width ?? 0;
     const maxHeight = textShadowOffset.height ?? 0;

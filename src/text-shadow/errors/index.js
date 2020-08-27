@@ -57,3 +57,9 @@ export class UnknownUnit extends SyntaxError {
     super('Unknown unit you used. Current only support px or number');
   }
 }
+
+export class NotFoundWidthHeightOffset extends SyntaxError {
+  constructor() {
+    super('Not found width height offset please provide them.');
+  }
+}
